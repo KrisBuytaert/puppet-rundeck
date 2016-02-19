@@ -1,4 +1,5 @@
-require 'puppetx/rundeck/acl'
+#require 'puppetx/rundeck/acl'
+File.expand_path('../../util/rundeck_acl', __FILE__)
 
 # Validates the rundeck ACL policies
 # Usage:
