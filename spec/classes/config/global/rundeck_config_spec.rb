@@ -11,7 +11,7 @@ describe 'rundeck' do
             :fqdn            => 'test.domain.com',
             :serialnumber    => 0,
             :rundeck_version => '',
-            :puppetversion   => Puppet.version,
+            :puppetversion   => Puppet.version
           }
         end
 
@@ -31,9 +31,15 @@ describe 'rundeck' do
           grails.serverURL = "http://test.domain.com:4440"
           rundeck.clusterMode.enabled = "false"
 
+          rundeck.projectsStorageType = "filesystem"
+
+          rundeck.storage.provider."1".type = "file"
           rundeck.storage.provider."1".config.baseDir = "/var/lib/rundeck/var/storage"
           rundeck.storage.provider."1".path = "/"
-          rundeck.storage.provider."1".type = "file"
+
+          rundeck.security.authorization.preauthenticated.enabled = "false"
+          rundeck.security.authorization.preauthenticated.attributeName = "REMOTE_USER_GROUPS"
+          rundeck.security.authorization.preauthenticated.delimiter = ":"
         CONFIG
 
         it do

@@ -258,12 +258,20 @@ class rundeck::params {
   }
 
   $keystore = '/etc/rundeck/ssl/keystore'
+  $key_storage_type = 'file'
+  $projects_storage_type = 'filesystem'
   $keystore_password = 'adminadmin'
   $key_password = 'adminadmin'
   $truststore = '/etc/rundeck/ssl/truststore'
   $truststore_password = 'adminadmin'
 
   $resource_sources = {}
+
+  $preauthenticated_config = {
+    'enabled'       => false,
+    'attributeName' => 'REMOTE_USER_GROUPS',
+    'delimiter'     => ':',
+  }
 
   $server_web_context = undef
   $jvm_args = '-Xmx1024m -Xms256m -server'
@@ -280,7 +288,12 @@ class rundeck::params {
   $session_timeout = 30
 
   $rdeck_config_template = 'rundeck/rundeck-config.erb'
+  $rdeck_profile_template = 'rundeck/profile.erb'
 
-  $file_keystorage_dir = '/var/lib/rundeck/var/storage'
   $file_keystorage_keys = { }
+  $file_keystorage_dir = "${framework_config['framework.var.dir']}/storage"
+
+  $manage_default_admin_policy = true
+  $manage_default_api_policy   = true
+
 }
