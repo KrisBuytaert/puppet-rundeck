@@ -98,6 +98,10 @@ class rundeck::params {
         'project' => [
           {'allow' => '*'},
         ],
+        'storage' => [
+          {'allow' => '*'},
+        ],
+
       },
       'by' => [{
         'group' => ['admin']
